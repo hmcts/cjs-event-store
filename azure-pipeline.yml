@@ -42,3 +42,4 @@ stages:
       sonarqube_project: ${{ variables['sonarqubeProject'] }}
 
 
+
