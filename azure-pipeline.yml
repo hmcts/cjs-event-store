@@ -37,3 +37,4 @@ stages:
   - template: pipelines/travis-build.yml@cppAzureDevOpsTemplates
     parameters:
       sonarqube_project: ${{ variables['sonarqubeProject'] }}
+
