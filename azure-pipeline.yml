@@ -1,0 +1,45 @@
+name: CJS Library Build& Publish
+
+trigger:
+  tags:
+    include:
+      - 'release-*'
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - '*'
+
+pr:
+  - '*'
+
+resources:
+  repositories:
+    - repository: cppAzureDevOpsTemplates
+      type: github
+      name: hmcts/cpp-azure-devops-templates
+      endpoint: 'hmcts'
+      ref: 'ado-template'
+
+    - repository: travisSettings
+      type: github
+      name: hmcts/cjs-travis-settings
+      endpoint: 'hmcts'
+      ref: 'test-new'
+
+pool:
+  name: 'MDV-ADO-AGENT-AKS-01'
+  demands:
+    - identifier -equals jo1-temp
+
+variables:
+  sonarqubeProject: "uk.gov.justice.event-store:event-store"
+
+stages:
+  - template: pipelines/travis-build.yml@cppAzureDevOpsTemplates
+    parameters:
+      sonarqube_project: ${{ variables['sonarqubeProject'] }}
+
+
+
