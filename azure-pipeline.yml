@@ -31,11 +31,9 @@ pool:
     - identifier -equals jo1-temp
 
 variables:
-  sonarqubeProject: "uk.gov.justice.framework.libraries:framework-libraries"
-  repo_token: "cjs-framework-libraries"
+  sonarqubeProject: "uk.gov.justice.event-store:event-store"
 
 stages:
   - template: pipelines/travis-build.yml@cppAzureDevOpsTemplates
     parameters:
       sonarqube_project: ${{ variables['sonarqubeProject'] }}
-      repo_token: ${{ variables['repo_token'] }}
