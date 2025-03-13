@@ -4,6 +4,9 @@ trigger:
   tags:
     include:
       - 'release-*'
+  branches:
+    include:
+      - master
   paths:
     include:
       - '*'
